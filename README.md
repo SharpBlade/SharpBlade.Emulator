@@ -7,7 +7,7 @@ A C# WPF application and C++ library to debug SBUI apps
 License
 -------
 
-Copyright &copy; 2013-2014 by [Adam Hellberg][sharp], [Brandon Scott][bs], and [Sijmen Schoon][ss].
+Copyright &copy; 2013-2014 by [Adam Hellberg][sharp], [Brandon Scott][bs], [Bjørn Tore Håvie][bth], and [Sijmen Schoon][ss].
 
 This project is licensed under the MIT license, please see the file **LICENSE** for more information.
 
@@ -25,5 +25,6 @@ SharpBlade.Debugger depends on the [log4net][l4n] library.
 
 [sharp]: https://github.com/Sharparam
 [bs]: https://github.com/brandonscott
+[bth]: https://github.com/itsbth
 [ss]: https://github.com/Vijfhoek
 [l4n]: http://logging.apache.org/log4net/
