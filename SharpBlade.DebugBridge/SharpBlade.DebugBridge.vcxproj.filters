@@ -27,6 +27,9 @@
     <ClInclude Include="SharpBlade.DebugBridge.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="razerapi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
