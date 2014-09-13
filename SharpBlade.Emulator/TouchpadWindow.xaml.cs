@@ -1,6 +1,7 @@
 ﻿// ---------------------------------------------------------------------------------------
 // <copyright file="TouchpadWindow.xaml.cs" company="SharpBlade">
-//     Copyright © 2014 by Adam Hellberg, Brandon Scott, and Sijmen Schoon.
+//     Copyright © 2014 by Adam Hellberg, Brandon Scott, Bjørn Tore Håvie,
+//     and Sijmen Schoon.
 // 
 //     Permission is hereby granted, free of charge, to any person obtaining a copy of
 //     this software and associated documentation files (the "Software"), to deal in
@@ -19,17 +20,17 @@
 //     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 //     CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 // 
-//     Disclaimer: SharpBlade.Debugger is in no way affiliated
+//     Disclaimer: SharpBlade.Emulator is in no way affiliated
 //     with Razer and/or any of its employees and/or licensors.
 //     Adam Hellberg, Brandon Scott or Sijmen Schoon do not take
 //     responsibility for any harm caused, direct or indirect, to any
-//     Razer peripherals via the use of SharpBlade.Debugger.
+//     Razer peripherals via the use of SharpBlade.Emulator.
 // 
 //     "Razer" is a trademark of Razer USA Ltd.
 // </copyright>
 // ---------------------------------------------------------------------------------------
 
-namespace SharpBlade.Debugger
+namespace SharpBlade.Emulator
 {
     using System.Windows;
 
