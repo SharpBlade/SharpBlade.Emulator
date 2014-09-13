@@ -22,7 +22,8 @@
 #define PIXEL_FORMAT_INVALID 0
 #define PIXEL_FORMAT_RGB_565 1
 
-RZSBSDK_GESTURETYPE activeGestures;
+RZSBSDK_GESTURETYPE activeGestures = RZSBSDK_GESTURE_NONE;
+RZSBSDK_GESTURETYPE activeOSGestures = RZSBSDK_GESTURE_NONE;
 
 extern HRESULT RzSBStart()
 {
@@ -68,11 +69,33 @@ extern HRESULT RzSBSetImageTouchpad(LPWSTR path)
 
 extern HRESULT RzSBEnableGesture(RZSBSDK_GESTURETYPE gesture, bool enable)
 {
+    if ((gesture == RZSBSDK_GESTURE_ALL || gesture == RZSBSDK_GESTURE_NONE) && enable)
+        activeGestures = gesture;
+    else if (gesture == RZSBSDK_GESTURE_ALL && !enable)
+        activeGestures = RZSBSDK_GESTURE_NONE;
+    else if (gesture == RZSBSDK_GESTURE_NONE && !enable)
+        activeGestures = RZSBSDK_GESTURE_ALL;
+    else if (enable)
+        activeGestures = (RZSBSDK_GESTURETYPE)(activeGestures | gesture);
+    else
+        activeGestures = (RZSBSDK_GESTURETYPE)(activeGestures & ~gesture);
+
     return RZSB_OK;
 }
 
 extern HRESULT RzSBEnableOSGesture(RZSBSDK_GESTURETYPE gesture, bool enable)
 {
+    if ((gesture == RZSBSDK_GESTURE_ALL || gesture == RZSBSDK_GESTURE_NONE) && enable)
+        activeOSGestures = gesture;
+    else if (gesture == RZSBSDK_GESTURE_ALL && !enable)
+        activeOSGestures = RZSBSDK_GESTURE_NONE;
+    else if (gesture == RZSBSDK_GESTURE_NONE && !enable)
+        activeOSGestures = RZSBSDK_GESTURE_ALL;
+    else if (enable)
+        activeOSGestures = (RZSBSDK_GESTURETYPE)(activeGestures | gesture);
+    else
+        activeOSGestures = (RZSBSDK_GESTURETYPE)(activeGestures & ~gesture);
+
     return RZSB_OK;
 }
 
