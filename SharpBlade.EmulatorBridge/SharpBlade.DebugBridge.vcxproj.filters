@@ -30,7 +30,10 @@
     <ClInclude Include="razerapi_errors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="debugbridge.h">
+    <ClInclude Include="manager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="emulator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -41,7 +44,10 @@
     <ClCompile Include="razerapi.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="debugbridge.cpp">
+    <ClCompile Include="manager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="emulator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

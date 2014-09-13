@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "razerapi.h"
 #include "razerapi_errors.h"
+#include "manager.h"
 
 #define VERSION 512
 #define BEVERSION 256
@@ -22,16 +23,17 @@
 #define PIXEL_FORMAT_INVALID 0
 #define PIXEL_FORMAT_RGB_565 1
 
-RZSBSDK_GESTURETYPE activeGestures = RZSBSDK_GESTURE_NONE;
-RZSBSDK_GESTURETYPE activeOSGestures = RZSBSDK_GESTURE_NONE;
-
 extern HRESULT RzSBStart()
 {
+    DWORD pid = GetCurrentProcessId();
+    Manager::NotifyStart(pid);
     return RZSB_OK;
 }
 
 extern HRESULT RzSBStop()
 {
+    DWORD pid = GetCurrentProcessId();
+    Manager::NotifyStop(pid);
     return RZSB_OK;
 }
 
@@ -54,72 +56,60 @@ extern HRESULT RzSBQueryCapabilities(PRZSBSDK_QUERYCAPABILITIES caps)
 
 extern HRESULT RzSBRenderBuffer(RZSBSDK_DISPLAY disp, RZSBSDK_BUFFERPARAMS *params)
 {
+    Manager::NotifyRender(disp, params);
     return RZSB_OK;
 }
 
 extern HRESULT RzSBSetImageDynamicKey(RZSBSDK_DKTYPE dk, RZSBSDK_KEYSTATETYPE state, LPWSTR path)
 {
+    Manager::NotifyDynamicKeyImageChanged(dk, state, path);
     return RZSB_OK;
 }
 
 extern HRESULT RzSBSetImageTouchpad(LPWSTR path)
 {
+    Manager::NotifyTouchpadImageChanged(path);
     return RZSB_OK;
 }
 
 extern HRESULT RzSBEnableGesture(RZSBSDK_GESTURETYPE gesture, bool enable)
 {
-    if ((gesture == RZSBSDK_GESTURE_ALL || gesture == RZSBSDK_GESTURE_NONE) && enable)
-        activeGestures = gesture;
-    else if (gesture == RZSBSDK_GESTURE_ALL && !enable)
-        activeGestures = RZSBSDK_GESTURE_NONE;
-    else if (gesture == RZSBSDK_GESTURE_NONE && !enable)
-        activeGestures = RZSBSDK_GESTURE_ALL;
-    else if (enable)
-        activeGestures = (RZSBSDK_GESTURETYPE)(activeGestures | gesture);
-    else
-        activeGestures = (RZSBSDK_GESTURETYPE)(activeGestures & ~gesture);
-
+    Manager::SetGesture(gesture, enable);
     return RZSB_OK;
 }
 
 extern HRESULT RzSBEnableOSGesture(RZSBSDK_GESTURETYPE gesture, bool enable)
 {
-    if ((gesture == RZSBSDK_GESTURE_ALL || gesture == RZSBSDK_GESTURE_NONE) && enable)
-        activeOSGestures = gesture;
-    else if (gesture == RZSBSDK_GESTURE_ALL && !enable)
-        activeOSGestures = RZSBSDK_GESTURE_NONE;
-    else if (gesture == RZSBSDK_GESTURE_NONE && !enable)
-        activeOSGestures = RZSBSDK_GESTURE_ALL;
-    else if (enable)
-        activeOSGestures = (RZSBSDK_GESTURETYPE)(activeGestures | gesture);
-    else
-        activeOSGestures = (RZSBSDK_GESTURETYPE)(activeGestures & ~gesture);
-
+    Manager::SetOSGesture(gesture, enable);
     return RZSB_OK;
 }
 
 extern HRESULT RzSBAppEventSetCallback(AppEventCallbackType callback)
 {
+    Manager::SetAppEventCallback(callback);
     return RZSB_OK;
 }
 
 extern HRESULT RzSBDynamicKeySetCallback(DynamicKeyCallbackFunctionType callback)
 {
+    Manager::SetDynamicKeyCallback(callback);
     return RZSB_OK;
 }
 
 extern HRESULT RzSBGestureSetCallback(TouchpadGestureCallbackFunctionType callback)
 {
+    Manager::SetGestureCallback(callback);
     return RZSB_OK;
 }
 
 extern HRESULT RzSBKeyboardCaptureSetCallback(KeyboardCallbackFunctionType callback)
 {
+    Manager::SetKeyboardCallback(callback);
     return RZSB_OK;
 }
 
 extern HRESULT RzSBCaptureKeyboard(bool enable)
 {
+    Manager::SetKeyboardCapture(enable);
     return RZSB_OK;
 }
