@@ -132,7 +132,7 @@ extern "C"
     extern HRESULT RzSBQueryCapabilities(PRZSBSDK_QUERYCAPABILITIES caps);
     extern HRESULT RzSBRenderBuffer(RZSBSDK_DISPLAY disp, RZSBSDK_BUFFERPARAMS *params);
 
-    extern HRESULT RzSBSetImageDynamicKey(RZSBSDK_DKTYPE, RZSBSDK_KEYSTATETYPE, LPWSTR);
+    extern HRESULT RzSBSetImageDynamicKey(RZSBSDK_DKTYPE dk, RZSBSDK_KEYSTATETYPE state, LPWSTR path);
     extern HRESULT RzSBSetImageTouchpad(LPWSTR path);
 
     extern HRESULT RzSBEnableGesture(RZSBSDK_GESTURETYPE gesture, bool enable);
