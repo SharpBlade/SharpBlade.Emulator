@@ -22,6 +22,8 @@
 #define PIXEL_FORMAT_INVALID 0
 #define PIXEL_FORMAT_RGB_565 1
 
+RZSBSDK_GESTURETYPE activeGestures;
+
 extern HRESULT RzSBStart()
 {
     return RZSB_OK;
