@@ -1,8 +1,7 @@
-SharpBlade.Debugger
+SharpBlade.Emulator
 ===================
 
-A C# WPF application and C++ library to debug SBUI apps
--------------------------------------------------------
+A C# WPF application and C++ library to emulate the SBUI hardware
 
 License
 -------
@@ -21,7 +20,7 @@ Apache log4net Copyright 2004-2011 The Apache Software Foundation (Apache Licens
 Dependencies
 ------------
 
-SharpBlade.Debugger depends on the [log4net][l4n] library.
+SharpBlade.Emulator depends on the [log4net][l4n] library.
 
 [sharp]: https://github.com/Sharparam
 [bs]: https://github.com/brandonscott
